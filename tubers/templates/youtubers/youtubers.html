@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main class="tubers-page">
+    <div class="banner">
+      <img src="{% static './assets/images/bg-banner.png'%}" alt="" class="img-fluid w-100">
+      <h1 class="text-center">
+        Tubers
+      </h1>
+    </div>
+    {% include 'messages.html' %}
+
+    <section class="container mt-5 mb-5">
+      <div class="row ">
+        <div class="col-lg-8 mb-2 ">
+          <section class="tubers">
+
+
+
+            <!-- person 1 -->
+            {% for tuber in tubers %}
+            <div class="card border-0 text-center">
+              <div class="feature-text">
+                  <a href="{% url 'youtubers_detail' tuber.id %}">
+                <img src="{{tuber.photo.url}}" class="card-img-top" alt="team-member">
+            </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">{{tuber.name}}</h5>
+                <p class="card-text">{{tuber.category}}</p>
+                <div class="person-description mt-2">
+                  <button class="btn btn-accent"> City: {{tuber.city}} </button>
+                  <button class="btn btn-accent"> Age: {{tuber.age}} </button>
+                  <button class="btn btn-accent"> Height: {{tuber.height}} </button>
+                </div>
+                <div class="person-description mt-2">
+                  <button class="btn btn-accent"> Solo: {{tuber.crew}} </button>
+                  <button class="btn btn-accent"> Canon: {{tuber.camera_type}} </button>
+                  <button class="btn btn-accent"> Subs: {{tuber.subs_count}} </button>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          </section>
+        </div>
+
+        <div class="col-lg-4 ">
+          <div class="card">
+            <div class="card-body">
+              <p class="text-left font-weight-bolder text-black-50">
+                Search Tubers
+              </p>
+              <form>
+                <div class="form-group">
+                  <select id="inputState" class="form-control">
+                    <option selected disabled hidden>City</option>
+                    <option>...</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <select id="inputState" class="form-control">
+                    <option selected disabled hidden>Camera Type</option>
+                    <option>Value 1</option>
+                    <option>Value 2</option>
+                    <option>Value 3</option>
+                    <option>Value 4</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <select class="form-control">
+                    <option selected disabled hidden>Category</option>
+                    <option>...</option>
+                  </select>
+                </div>
+
+              </form>
+
+
+              <button class="btn btn-accent btn-block">Search</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container section pagination-section mt-3">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </main>
+{% endblock %}
