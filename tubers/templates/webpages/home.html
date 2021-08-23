@@ -17,7 +17,7 @@
           </p>
           <div>
 
-            <a class="btn btn-accent pl-3 pr-3 text-capitalize font-weight-bold" href="{{ slide.weblink }}">
+            <a class="btn btn-accent pl-3 pr-3 text-capitalize font-weight-bold" href="http://127.0.0.1:8000/youtubers/">
               {{ slide.button_text }}
             </a>
           </div>
@@ -52,10 +52,12 @@
         {% for fy in featured_youtubers %}
         <div class="card border-0 text-center ml-3 mr-3">
           <div class="feature-text">
+            <a href="http://127.0.0.1:8000/youtubers/{{fy.id}}">
             <img src="{{ fy.photo.url }}" class="card-img-top" alt="team-member">
             <span class="text-left bg-accent font-weight-bold">
               Featured
             </span>
+          </a>
           </div>
           <div class="card-body">
             <h5 class="card-title">{{fy.name}}</h5>
@@ -74,11 +76,6 @@
         </div>
         {% endfor %}
 
-
-       
-
-
-
       </div>
 
       <div class="controls d-flex justify-content-center mt-2 mb-2">
@@ -89,8 +86,6 @@
       </div>
     </section>
 
-
-
     <section class="container mt-5 mb-5">
       <h3 class="text-center">Latest On Board YTubers</h3>
       <p class="pt-2 pb-3 text-center">YTubers who recently got onboard with us</p>
@@ -100,8 +95,9 @@
         {% for at in all_tubers %}
         <div class="card border-0 text-center">
           <div>
+            <a href="http://127.0.0.1:8000/youtubers/{{at.id}}">
             <img src="{{at.photo.url}}" class="card-img-top" alt="team-member">
-
+            </a>
           </div>
           <div class="card-body">
             <h5 class="card-title">{{at.name}}</h5>
@@ -123,10 +119,6 @@
 
     </section>
 
-
-
-
-
     <section class="container mt-3">
       <h3 class="text-center">Our Amazing Team</h3>
       <p class="pt-2 pb-3 text-center">Meet the team</p>
@@ -147,9 +139,6 @@
           </div>
         </div>
         {% endfor %}
-
-       
-
 
       </div>
 

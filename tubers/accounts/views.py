@@ -3,7 +3,8 @@ from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
-
+from hiretubers.models import Hiretuber
+from django.db.models import Q
 # Create your views here.
 def login(request):
     if request.method =='POST':
@@ -56,4 +57,11 @@ def logout_user(request):
 
 @login_required(login_url='login')
 def dashboard(request):
-    return render(request,'accounts/dashboard.html')
+    currentuser=request.user
+    tubers=Hiretuber.objects.order_by('-created_date').filter(user_id=currentuser.id)
+    print("result",currentuser.first_name)
+    data={
+        'tubers':tubers,
+        'user':currentuser
+    }
+    return render(request,'accounts/dashboard.html',data)
